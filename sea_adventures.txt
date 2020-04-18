@@ -1,0 +1,7 @@
+"Gamemode"
+{
+	"base" "base"
+	"title" "Sea Adventures"
+	"maps" "^gm_"
+	"menusystem" "1"
+}
