@@ -1,6 +1,10 @@
+include("concommands.lua")
+
 local Menu
 
 net.Receive("FMenu", function()
+    local client = LocalPlayer()
+
     if (Menu == nil) then
         local Menu = vgui.Create("DFrame")
         Menu:SetSize(500,500)
@@ -31,6 +35,11 @@ function addButtons(Menu)
         draw.DrawText("Pirata pataPalo", "DermaDefaultBold", pirataButton:GetWide()/2,17, Color(1,1,255,255),1)
     end
 
+    pirataButton.DoClick = function(pirataButton)
+        LocalPlayer():SetNWString("playerType", "Pirata")
+        LocalPlayer():ConCommand("change_to_pirate")
+    end
+
     local oroButton = vgui.Create("DButton")
     oroButton:SetParent(Menu)
     oroButton:SetText("")
@@ -45,6 +54,11 @@ function addButtons(Menu)
         surface.DrawRect(99,0,1,oroButton:GetTall())
 
         draw.DrawText("Oro", "DermaDefaultBold", oroButton:GetWide()/2,17, Color(255,255,0,255),1)
+    end
+
+    oroButton.DoClick = function(oroButton)
+        LocalPlayer():SetNWString("playerType", "Oro")
+        LocalPlayer():ConCommand("change_to_lapa")
     end
 
     local hombreRanaButton = vgui.Create("DButton")
@@ -63,6 +77,12 @@ function addButtons(Menu)
         draw.DrawText("Hombre Rana", "DermaDefaultBold", hombreRanaButton:GetWide()/2,17, Color(0,255,100,255),1)
     end
 
+    hombreRanaButton.DoClick = function(hombreRanaButton)
+        LocalPlayer():SetNWString("playerType", "Hombre rana")
+        LocalPlayer():ConCommand("change_to_frog_man")
+
+    end
+
     local mocoButton = vgui.Create("DButton")
     mocoButton:SetParent(Menu)
     mocoButton:SetText("")
@@ -77,6 +97,12 @@ function addButtons(Menu)
         surface.DrawRect(99,0,1,mocoButton:GetTall())
 
         draw.DrawText("Moco", "DermaDefaultBold", mocoButton:GetWide()/2,17, Color(0,255,0,255),1)
+    end
+
+    mocoButton.DoClick = function(mocoButton)
+        LocalPlayer():SetNWString("playerType", "Moco")
+        LocalPlayer():ConCommand("change_to_moco")
+
     end
 
     local piedraButton = vgui.Create("DButton")
@@ -95,6 +121,11 @@ function addButtons(Menu)
         draw.DrawText("Piedra", "DermaDefaultBold", piedraButton:GetWide()/2,17, Color(255,255,255,255),1)
     end
 
+    piedraButton.DoClick = function(piedraButton)
+        LocalPlayer():SetNWString("playerType", "Piedra")
+        LocalPlayer():ConCommand("change_to_stone")
+    end
+
     local lapaButton = vgui.Create("DButton")
     lapaButton:SetParent(Menu)
     lapaButton:SetText("")
@@ -109,5 +140,10 @@ function addButtons(Menu)
         surface.DrawRect(99,0,1,lapaButton:GetTall())
 
         draw.DrawText("Lapa", "DermaDefaultBold", lapaButton:GetWide()/2,17, Color(150,50,200,255),1)
+    end
+    
+    lapaButton.DoClick = function(lapaButton)
+        LocalPlayer():SetNWString("playerType", "Lapa")
+        LocalPlayer():ConCommand("change_to_lapa")
     end
 end

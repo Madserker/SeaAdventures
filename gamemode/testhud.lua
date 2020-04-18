@@ -34,7 +34,7 @@ function HUD()
     end
 
     draw.RoundedBox(0, 255, ScrH() - 100, 125, 25, Color(30,30,30,130))
-    draw.SimpleText("KillCount: " .. client:GetNWInt("killCount"), "DermaDefaultBold", 260, ScrH() - 95, Color(255,255,255,255),0)
+    draw.SimpleText("type: " .. client:GetNWString("playerType"), "DermaDefaultBold", 260, ScrH() - 95, Color(255,255,255,255),0)
 end
 hook.Add("HUDPaint", "TestHud", HUD)
 
