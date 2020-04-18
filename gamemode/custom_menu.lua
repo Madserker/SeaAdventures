@@ -32,11 +32,10 @@ function addButtons(Menu)
         surface.DrawRect(0,49, pirataButton:GetWide(), 1)
         surface.DrawRect(99,0,1,pirataButton:GetTall())
 
-        draw.DrawText("Pirata pataPalo", "DermaDefaultBold", pirataButton:GetWide()/2,17, Color(1,1,255,255),1)
+        draw.DrawText("Pirate", "DermaDefaultBold", pirataButton:GetWide()/2,17, Color(1,1,255,255),1)
     end
 
     pirataButton.DoClick = function(pirataButton)
-        LocalPlayer():SetNWString("playerType", "Pirata")
         LocalPlayer():ConCommand("change_to_pirate")
     end
 
@@ -53,12 +52,11 @@ function addButtons(Menu)
         surface.DrawRect(0,49, oroButton:GetWide(), 1)
         surface.DrawRect(99,0,1,oroButton:GetTall())
 
-        draw.DrawText("Oro", "DermaDefaultBold", oroButton:GetWide()/2,17, Color(255,255,0,255),1)
+        draw.DrawText("Gold", "DermaDefaultBold", oroButton:GetWide()/2,17, Color(255,255,0,255),1)
     end
 
     oroButton.DoClick = function(oroButton)
-        LocalPlayer():SetNWString("playerType", "Oro")
-        LocalPlayer():ConCommand("change_to_lapa")
+        LocalPlayer():ConCommand("change_to_gold")
     end
 
     local hombreRanaButton = vgui.Create("DButton")
@@ -74,11 +72,10 @@ function addButtons(Menu)
         surface.DrawRect(0,49, hombreRanaButton:GetWide(), 1)
         surface.DrawRect(99,0,1,hombreRanaButton:GetTall())
 
-        draw.DrawText("Hombre Rana", "DermaDefaultBold", hombreRanaButton:GetWide()/2,17, Color(0,255,100,255),1)
+        draw.DrawText("FrogMan", "DermaDefaultBold", hombreRanaButton:GetWide()/2,17, Color(0,255,100,255),1)
     end
 
     hombreRanaButton.DoClick = function(hombreRanaButton)
-        LocalPlayer():SetNWString("playerType", "Hombre rana")
         LocalPlayer():ConCommand("change_to_frog_man")
 
     end
@@ -100,7 +97,6 @@ function addButtons(Menu)
     end
 
     mocoButton.DoClick = function(mocoButton)
-        LocalPlayer():SetNWString("playerType", "Moco")
         LocalPlayer():ConCommand("change_to_moco")
 
     end
@@ -118,11 +114,10 @@ function addButtons(Menu)
         surface.DrawRect(0,49, piedraButton:GetWide(), 1)
         surface.DrawRect(99,0,1,piedraButton:GetTall())
 
-        draw.DrawText("Piedra", "DermaDefaultBold", piedraButton:GetWide()/2,17, Color(255,255,255,255),1)
+        draw.DrawText("Stone", "DermaDefaultBold", piedraButton:GetWide()/2,17, Color(255,255,255,255),1)
     end
 
     piedraButton.DoClick = function(piedraButton)
-        LocalPlayer():SetNWString("playerType", "Piedra")
         LocalPlayer():ConCommand("change_to_stone")
     end
 
@@ -143,7 +138,26 @@ function addButtons(Menu)
     end
     
     lapaButton.DoClick = function(lapaButton)
-        LocalPlayer():SetNWString("playerType", "Lapa")
         LocalPlayer():ConCommand("change_to_lapa")
+    end
+
+    local restartButton = vgui.Create("DButton")
+    restartButton:SetParent(Menu)
+    restartButton:SetText("")
+    restartButton:SetSize(100,50)
+    restartButton:SetPos(0,325)
+    restartButton.Paint = function()
+        surface.SetDrawColor(50,50,50,255)
+        surface.DrawRect(0,0,restartButton:GetWide(), restartButton:GetTall())
+
+        surface.SetDrawColor(40,40,40,255)
+        surface.DrawRect(0,49, restartButton:GetWide(), 1)
+        surface.DrawRect(99,0,1,restartButton:GetTall())
+
+        draw.DrawText("Restart", "DermaDefaultBold", restartButton:GetWide()/2,17, Color(150,50,200,255),1)
+    end
+
+    restartButton.DoClick = function(restartButton)
+        LocalPlayer():ConCommand("restart")
     end
 end
