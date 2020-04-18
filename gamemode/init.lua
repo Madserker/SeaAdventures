@@ -13,7 +13,6 @@ function GM:PlayerSpawn(ply)--evrytime it spawns
 end
 
 function GM:PlayerInitialSpawn()--first time it spawns
-
 end
 
 function GM:OnNPCKilled(npc, attacker, inflictor)
@@ -22,4 +21,18 @@ end
 
 function GM:PlayerDeath(victim, inflictor, attacker)
     attacker:SetNWInt("killCount", attacker:GetNWInt("killCount") + 1)
+end
+
+util.AddNetworkString("FMenu")
+function GM:ShowSpare2(ply)
+    net.Start("FMenu")
+    net.Broadcast()
+end
+
+function GM:OnEndRound()
+end
+
+function GM:OnStartRound()
+    net.Start("FMenu")
+    net.Broadcast()
 end

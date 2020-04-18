@@ -5,6 +5,8 @@ GM.Website = "N/A"
 
 DeriveGamemode("sandbox")
 
+include("custom_menu.lua")
+
 function GM:Initialize()
     self.BaseClass.Initialize(self)
 end

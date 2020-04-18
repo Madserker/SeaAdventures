@@ -17,18 +17,20 @@ function HUD()
 
     draw.RoundedBox(0, 255, ScrH() - 70, 125, 70, Color(30, 30, 30, 130))
 
-    if (client:GetActiveWeapon() != nil && client:GetActiveWeapon():GetPrintName() != nil) then
-        draw.SimpleText(client:GetActiveWeapon():GetPrintName(), "DermaDefaultBold", 260, ScrH() - 60, Color(255, 255, 255, 255), 0, 0)
-    end
+    if (client:GetActiveWeapon():IsValid()) then
+        if (client:GetActiveWeapon():GetPrintName() != nil) then
+            draw.SimpleText(client:GetActiveWeapon():GetPrintName(), "DermaDefaultBold", 260, ScrH() - 60, Color(255, 255, 255, 255), 0, 0)
+        end
 
-    if (client:GetActiveWeapon():Clip1() != -1) then
-        draw.SimpleText("Ammo: "..client:GetActiveWeapon():Clip1() .. "/" .. client:GetAmmoCount(client:GetActiveWeapon():GetPrimaryAmmoType()), "DermaDefaultBold", 260, ScrH() - 40, Color(255,255,255,255), 0, 0)
-    else
-        draw.SimpleText("Ammo: ".. client:GetAmmoCount(client:GetActiveWeapon():GetPrimaryAmmoType()), "DermaDefaultBold", 260, ScrH() - 40, Color(255,255,255,255), 0, 0)
-    end
+        if (client:GetActiveWeapon():Clip1() != -1) then
+            draw.SimpleText("Ammo: "..client:GetActiveWeapon():Clip1() .. "/" .. client:GetAmmoCount(client:GetActiveWeapon():GetPrimaryAmmoType()), "DermaDefaultBold", 260, ScrH() - 40, Color(255,255,255,255), 0, 0)
+        else
+            draw.SimpleText("Ammo: ".. client:GetAmmoCount(client:GetActiveWeapon():GetPrimaryAmmoType()), "DermaDefaultBold", 260, ScrH() - 40, Color(255,255,255,255), 0, 0)
+        end
 
-    if (client:GetAmmoCount(client:GetActiveWeapon():GetSecondaryAmmoType()) > 0) then
-        draw.SimpleText("Secondary: " .. client:GetAmmoCount(client:GetActiveWeapon():GetSecondaryAmmoType()), "DermaDefaultBold", 260, ScrH() - 25, Color(255,255,255,255), 0, 0)
+        if (client:GetAmmoCount(client:GetActiveWeapon():GetSecondaryAmmoType()) > 0) then
+            draw.SimpleText("Secondary: " .. client:GetAmmoCount(client:GetActiveWeapon():GetSecondaryAmmoType()), "DermaDefaultBold", 260, ScrH() - 25, Color(255,255,255,255), 0, 0)
+        end
     end
 
     draw.RoundedBox(0, 255, ScrH() - 100, 125, 25, Color(30,30,30,130))
